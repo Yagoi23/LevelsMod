@@ -24,6 +24,8 @@ namespace LevelsMod
 		public float DefenseXP;
 		public int SpeedSkill;
 		public float SpeedXP;
+		public int JumpSkill;
+		public float JumpXP;
 		public override void SetupStartInventory(IList<Item> items, bool mediumcoreDeath) {
 			DMGSkill = 0;
 			DMGXP = 0f;
@@ -37,6 +39,8 @@ namespace LevelsMod
 			val.Add("DefenseXP", DefenseXP);
 			val.Add("SpeedSkill", SpeedSkill);
 			val.Add("SpeedXP", SpeedXP);
+			val.Add("JumpSkill", JumpSkill);
+			val.Add("JumpXP", JumpXP);
 			return val;
 		}
 		public override void Load(TagCompound tag)
@@ -47,6 +51,8 @@ namespace LevelsMod
 			DefenseXP = tag.GetFloat("DefenseXP");
 			SpeedSkill = tag.GetInt("SpeedSkill");
 			SpeedXP = tag.GetFloat("SpeedXP");
+			JumpSkill = tag.GetInt("JumpSkill");
+			JumpXP = tag.GetFloat("JumpXP");
 		}
 
 		public override void LoadLegacy(BinaryReader reader)
@@ -58,14 +64,20 @@ namespace LevelsMod
 		}
 		public override void PostUpdateMiscEffects()
 		{
-			player.allDamage += (float)((float)DMGSkill / 200);
-			player.endurance += (float)((float)DefenseSkill / 400);
+			player.allDamage += (float)((float)DMGSkill/10);
+			player.statDefense += (int)((float)DefenseSkill);
+			//player.endurance += (float)((float)DefenseSkill/10);
 			SpeedBuff();
+			JumpBuff();
 		}
 		public override void PostUpdateRunSpeeds()
 		{
 			float speedMult = 1f + (float)(SpeedSkill / 50);
 			player.maxRunSpeed *= speedMult;
+			player.moveSpeed *= speedMult;
+			int jumpMult = 1 + (int)(JumpSkill);
+			player.jumpSpeedBoost *= jumpMult * 2;
+			Player.jumpHeight += jumpMult;
 		}
 		public void SpeedBuff(){
 			if(player.velocity.X > 0){
@@ -84,7 +96,7 @@ namespace LevelsMod
 					Main.NewText("Speed Lvl is now " + player.GetModPlayer<StatsPlayer>().SpeedSkill, Color.Green, false);
 				}
 			}
-			if(player.velocity.Y > 0){
+			/*if(player.velocity.Y > 0){
 				SpeedXP += (player.velocity.Y) / 15f;
 				if(player.GetModPlayer<StatsPlayer>().SpeedXP > (float)((player.GetModPlayer<StatsPlayer>().SpeedSkill * 350) + (player.GetModPlayer<StatsPlayer>().SpeedSkill * player.GetModPlayer<StatsPlayer>().SpeedSkill))){
 					player.GetModPlayer<StatsPlayer>().SpeedXP = 0;
@@ -98,6 +110,29 @@ namespace LevelsMod
 					player.GetModPlayer<StatsPlayer>().SpeedXP = 0;
 					player.GetModPlayer<StatsPlayer>().SpeedSkill += 1;
 					Main.NewText("Speed Lvl is now " + player.GetModPlayer<StatsPlayer>().SpeedSkill, Color.Green, false);
+				}
+			}*/
+		}
+		public void JumpBuff()
+		{
+			if (player.velocity.Y > 0)
+			{
+				JumpXP += (player.velocity.Y) / 15f;
+				if (player.GetModPlayer<StatsPlayer>().JumpXP > (float)((player.GetModPlayer<StatsPlayer>().JumpSkill * 100) + (player.GetModPlayer<StatsPlayer>().JumpSkill * player.GetModPlayer<StatsPlayer>().JumpSkill)))
+				{
+					player.GetModPlayer<StatsPlayer>().JumpXP = 0;
+					player.GetModPlayer<StatsPlayer>().JumpSkill += 1;
+					Main.NewText("Jump Lvl is now " + player.GetModPlayer<StatsPlayer>().JumpSkill, Color.Green, false);
+				}
+			}
+			if (player.velocity.Y < 0)
+			{
+				JumpXP += (player.velocity.Y) / -15f;
+				if (player.GetModPlayer<StatsPlayer>().JumpXP > (float)((player.GetModPlayer<StatsPlayer>().JumpSkill * 100) + (player.GetModPlayer<StatsPlayer>().JumpSkill * player.GetModPlayer<StatsPlayer>().JumpSkill)))
+				{
+					player.GetModPlayer<StatsPlayer>().JumpXP = 0;
+					player.GetModPlayer<StatsPlayer>().JumpSkill += 1;
+					Main.NewText("Jump Lvl is now " + player.GetModPlayer<StatsPlayer>().JumpSkill, Color.Green, false);
 				}
 			}
 		}
