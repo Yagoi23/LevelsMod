@@ -76,7 +76,7 @@ namespace LevelsMod
 			player.maxRunSpeed *= speedMult;
 			player.moveSpeed *= speedMult;
 			int jumpMult = 1 + (int)(JumpSkill);
-			player.jumpSpeedBoost *= jumpMult * 2;
+			Player.jumpSpeed += jumpMult / 10;
 			Player.jumpHeight += jumpMult;
 		}
 		public void SpeedBuff(){
