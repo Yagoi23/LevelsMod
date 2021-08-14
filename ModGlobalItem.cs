@@ -35,6 +35,13 @@ namespace LevelsMod
 				player.GetModPlayer<StatsPlayer>().ManaEffSkill += 1;
 				Main.NewText("Mana Efficiency Lvl is now " + player.GetModPlayer<StatsPlayer>().ManaEffSkill, Color.Green, false);
 			}
+			player.GetModPlayer<StatsPlayer>().ManaRGNXP += (int)(manaConsumed / 2);
+			if (player.GetModPlayer<StatsPlayer>().ManaRGNXP > (float)((player.GetModPlayer<StatsPlayer>().ManaRGNSkill * 650) + (player.GetModPlayer<StatsPlayer>().ManaRGNSkill * 6 * player.GetModPlayer<StatsPlayer>().ManaRGNSkill)))
+			{
+				player.GetModPlayer<StatsPlayer>().ManaRGNXP = 0;
+				player.GetModPlayer<StatsPlayer>().ManaRGNSkill += 1;
+				Main.NewText("Mana Regeneration Lvl is now " + player.GetModPlayer<StatsPlayer>().ManaRGNSkill, Color.Green, false);
+			}
 		}
         /*public override void ModifyManaCost(Item item, Player player, ref float reduce, ref float mult)
         {
