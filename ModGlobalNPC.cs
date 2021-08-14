@@ -18,6 +18,13 @@ namespace LevelsMod
 				player.GetModPlayer<StatsPlayer>().DefenseSkill += 1;
 				Main.NewText("Defense Lvl is now " + player.GetModPlayer<StatsPlayer>().DefenseSkill, Color.Green, false);
 			}
+			player.GetModPlayer<StatsPlayer>().EnduranceXP += (int)(damage/10);
+			if (player.GetModPlayer<StatsPlayer>().EnduranceXP > (float)((player.GetModPlayer<StatsPlayer>().EnduranceSkill * 50) + (player.GetModPlayer<StatsPlayer>().EnduranceSkill * player.GetModPlayer<StatsPlayer>().EnduranceSkill)))
+			{
+				player.GetModPlayer<StatsPlayer>().EnduranceXP = 0;
+				player.GetModPlayer<StatsPlayer>().EnduranceSkill += 1;
+				Main.NewText("Endurance Lvl is now " + player.GetModPlayer<StatsPlayer>().EnduranceSkill, Color.Green, false);
+			}
 		}
 	}
 }

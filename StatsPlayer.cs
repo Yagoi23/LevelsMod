@@ -22,6 +22,10 @@ namespace LevelsMod
 		public float DMGXP;
 		public int DefenseSkill;
 		public float DefenseXP;
+
+		public int EnduranceSkill;
+		public float EnduranceXP;
+
 		public int SpeedSkill;
 		public float SpeedXP;
 		public int JumpSkill;
@@ -45,6 +49,10 @@ namespace LevelsMod
 			val.Add("DMGXP", DMGXP);
 			val.Add("DefenseSkill", DefenseSkill);
 			val.Add("DefenseXP", DefenseXP);
+
+			val.Add("EnduranceSkill", EnduranceSkill);
+			val.Add("EnduranceXP", EnduranceXP);
+
 			val.Add("SpeedSkill", SpeedSkill);
 			val.Add("SpeedXP", SpeedXP);
 			val.Add("JumpSkill", JumpSkill);
@@ -65,6 +73,10 @@ namespace LevelsMod
 			DMGXP = tag.GetFloat("DMGXP");
 			DefenseSkill = tag.GetInt("DefenseSkill");
 			DefenseXP = tag.GetFloat("DefenseXP");
+
+			EnduranceSkill = tag.GetInt("EnduranceSkill");
+			EnduranceXP = tag.GetFloat("EnduranceXP");
+
 			SpeedSkill = tag.GetInt("SpeedSkill");
 			SpeedXP = tag.GetFloat("SpeedXP");
 			JumpSkill = tag.GetInt("JumpSkill");
@@ -97,6 +109,7 @@ namespace LevelsMod
 			player.meleeCrit += (int)((float)CritSkill);
 			player.thrownCrit += (int)((float)CritSkill);
 			player.manaRegen += (int)((float)ManaRGNSkill);
+			player.endurance += (int)((float)EnduranceSkill);
 			//player.magicDamage -= (float)((float)ManaEffSkill / 50);
 			//player.manaCost -=
 			//player.endurance += (float)((float)DefenseSkill/10);
