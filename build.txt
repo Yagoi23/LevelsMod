@@ -1,0 +1,3 @@
+displayName = Yagoi's Levels Mod
+author = Yagoi
+version = 0.1
