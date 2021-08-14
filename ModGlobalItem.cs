@@ -17,6 +17,13 @@ namespace LevelsMod
 				player.GetModPlayer<StatsPlayer>().DMGSkill += 1;
 				Main.NewText("Damage Lvl is now " + player.GetModPlayer<StatsPlayer>().DMGSkill, Color.Green, false);
 			}
+			player.GetModPlayer<StatsPlayer>().CritXP += (int)(damage / 10);
+			if (player.GetModPlayer<StatsPlayer>().CritXP > (float)((player.GetModPlayer<StatsPlayer>().CritSkill * 650) + (player.GetModPlayer<StatsPlayer>().CritSkill * 6 * player.GetModPlayer<StatsPlayer>().CritSkill)))
+			{
+				player.GetModPlayer<StatsPlayer>().CritXP = 0;
+				player.GetModPlayer<StatsPlayer>().CritSkill += 1;
+				Main.NewText("Critical Chance Lvl is now " + player.GetModPlayer<StatsPlayer>().CritSkill, Color.Green, false);
+			}
 		}
         public override void OnConsumeMana(Item item, Player player, int manaConsumed)
         {
@@ -29,5 +36,11 @@ namespace LevelsMod
 				Main.NewText("Mana Efficiency Lvl is now " + player.GetModPlayer<StatsPlayer>().ManaEffSkill, Color.Green, false);
 			}
 		}
+        /*public override void ModifyManaCost(Item item, Player player, ref float reduce, ref float mult)
+        {
+			//base.ModifyManaCost(item, player, ref reduce, ref mult);
+			mult += player.GetModPlayer<StatsPlayer>().ManaEffSkill/2;
+
+		}*/
     }
 }

@@ -27,6 +27,9 @@ namespace LevelsMod
 		public int JumpSkill;
 		public float JumpXP;
 
+		public int CritSkill;
+		public float CritXP;
+
 		public int ManaEffSkill;
 		public float ManaEffXP;
 		public override void SetupStartInventory(IList<Item> items, bool mediumcoreDeath) {
@@ -45,6 +48,9 @@ namespace LevelsMod
 			val.Add("JumpSkill", JumpSkill);
 			val.Add("JumpXP", JumpXP);
 
+			val.Add("CritSkill", CritSkill);
+			val.Add("CritXP", CritXP);
+
 			val.Add("ManaEffSkill", ManaEffSkill);
 			val.Add("ManaEffXp", ManaEffXP);
 			return val;
@@ -59,6 +65,9 @@ namespace LevelsMod
 			SpeedXP = tag.GetFloat("SpeedXP");
 			JumpSkill = tag.GetInt("JumpSkill");
 			JumpXP = tag.GetFloat("JumpXP");
+
+			CritSkill = tag.GetInt("CritSkill");
+			CritXP = tag.GetFloat("CritXP");
 
 			ManaEffSkill = tag.GetInt("ManaEffSkill");
 			ManaEffXP = tag.GetFloat("ManaEffXP");
@@ -75,7 +84,12 @@ namespace LevelsMod
 		{
 			player.allDamage += (float)((float)DMGSkill/10);
 			player.statDefense += (int)((float)DefenseSkill);
-			player.manaCost -= (int)((float)ManaEffSkill);
+			player.manaCost -= (float)((float)ManaEffSkill/50);
+			player.magicCrit += (int)((float)CritSkill);
+			player.rangedCrit += (int)((float)CritSkill);
+			player.meleeCrit += (int)((float)CritSkill);
+			player.thrownCrit += (int)((float)CritSkill);
+			//player.magicDamage -= (float)((float)ManaEffSkill / 50);
 			//player.manaCost -=
 			//player.endurance += (float)((float)DefenseSkill/10);
 			SpeedBuff();

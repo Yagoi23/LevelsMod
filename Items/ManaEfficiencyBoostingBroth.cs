@@ -5,12 +5,12 @@ using Microsoft.Xna.Framework;
 
 namespace LevelsMod.Items
 {
-	public class JumpBoostingBroth : ModItem
+	public class ManaEfficiencyBoostingBroth : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Jump Boosting Broth");
-			Tooltip.SetDefault("A foul tasting broth that boosts your ability to jump.");
+			DisplayName.SetDefault("Mana Efficiency Boosting Broth");
+			Tooltip.SetDefault("A foul tasting broth that boosts your mana efficiency.");
 		}
 		public override void SetDefaults()
 		{
@@ -27,8 +27,8 @@ namespace LevelsMod.Items
 
 		public override bool UseItem(Player player)
 		{
-			player.GetModPlayer<StatsPlayer>().JumpSkill += 1;
-			Main.NewText("Jump Lvl is now " + player.GetModPlayer<StatsPlayer>().JumpSkill, Color.Green, false);
+			player.GetModPlayer<StatsPlayer>().ManaEffSkill += 1;
+			Main.NewText("Mana Efficiency Lvl is now " + player.GetModPlayer<StatsPlayer>().ManaEffSkill, Color.Green, false);
 			return true;
 		}
 

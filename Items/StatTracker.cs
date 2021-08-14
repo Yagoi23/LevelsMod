@@ -28,6 +28,8 @@ namespace LevelsMod.Items
 		public override bool UseItem(Player player)
 		{
 			Main.NewText("Damage Lvl " + player.GetModPlayer<StatsPlayer>().DMGSkill, Color.Purple, false);
+			Main.NewText("Critical Chance Lvl " + player.GetModPlayer<StatsPlayer>().CritSkill, Color.Purple, false);
+
 			Main.NewText("Defense Lvl " + player.GetModPlayer<StatsPlayer>().DefenseSkill, Color.Purple, false);
 			Main.NewText("Speed Lvl " + player.GetModPlayer<StatsPlayer>().SpeedSkill, Color.Purple, false);
 			Main.NewText("Jump Lvl " + player.GetModPlayer<StatsPlayer>().JumpSkill, Color.Purple, false);

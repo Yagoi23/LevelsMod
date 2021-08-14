@@ -5,12 +5,12 @@ using Microsoft.Xna.Framework;
 
 namespace LevelsMod.Items
 {
-	public class JumpBoostingBroth : ModItem
+	public class CritBoostingBroth : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Jump Boosting Broth");
-			Tooltip.SetDefault("A foul tasting broth that boosts your ability to jump.");
+			DisplayName.SetDefault("Critical Chance Boosting Broth");
+			Tooltip.SetDefault("A foul tasting broth that boosts your critical chance.");
 		}
 		public override void SetDefaults()
 		{
@@ -27,8 +27,8 @@ namespace LevelsMod.Items
 
 		public override bool UseItem(Player player)
 		{
-			player.GetModPlayer<StatsPlayer>().JumpSkill += 1;
-			Main.NewText("Jump Lvl is now " + player.GetModPlayer<StatsPlayer>().JumpSkill, Color.Green, false);
+			player.GetModPlayer<StatsPlayer>().CritSkill += 1;
+			Main.NewText("Critical Chance Lvl is now " + player.GetModPlayer<StatsPlayer>().CritSkill, Color.Green, false);
 			return true;
 		}
 
