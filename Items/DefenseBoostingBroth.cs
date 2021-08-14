@@ -16,13 +16,13 @@ namespace LevelsMod.Items
 		{
 			item.width = 38;
 			item.height = 32;
-			item.maxStack = 1;
+			item.maxStack = 99;
 			item.rare = ItemRarityID.Red;
 			item.useAnimation = 15;
 			item.useTime = 15;
 			item.useStyle = 2;
-			//item.UseSound = SoundID.Item3;
-			item.consumable = false;
+			item.UseSound = SoundID.Item3;
+			item.consumable = true;
 		}
 
 		public override bool UseItem(Player player)
