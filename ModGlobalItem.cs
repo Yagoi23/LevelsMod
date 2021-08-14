@@ -18,5 +18,16 @@ namespace LevelsMod
 				Main.NewText("Damage Lvl is now " + player.GetModPlayer<StatsPlayer>().DMGSkill, Color.Green, false);
 			}
 		}
-	}
+        public override void OnConsumeMana(Item item, Player player, int manaConsumed)
+        {
+            //base.OnConsumeMana(item, player, manaConsumed);
+			player.GetModPlayer<StatsPlayer>().ManaEffXP += (int)(manaConsumed / 5);
+			if (player.GetModPlayer<StatsPlayer>().ManaEffXP > (float)((player.GetModPlayer<StatsPlayer>().ManaEffSkill * 650) + (player.GetModPlayer<StatsPlayer>().ManaEffSkill * 6 * player.GetModPlayer<StatsPlayer>().ManaEffSkill)))
+			{
+				player.GetModPlayer<StatsPlayer>().ManaEffXP = 0;
+				player.GetModPlayer<StatsPlayer>().ManaEffSkill += 1;
+				Main.NewText("Mana Efficiency Lvl is now " + player.GetModPlayer<StatsPlayer>().ManaEffSkill, Color.Green, false);
+			}
+		}
+    }
 }

@@ -31,6 +31,8 @@ namespace LevelsMod.Items
 			Main.NewText("Defense Lvl " + player.GetModPlayer<StatsPlayer>().DefenseSkill, Color.Purple, false);
 			Main.NewText("Speed Lvl " + player.GetModPlayer<StatsPlayer>().SpeedSkill, Color.Purple, false);
 			Main.NewText("Jump Lvl " + player.GetModPlayer<StatsPlayer>().JumpSkill, Color.Purple, false);
+
+			Main.NewText("Mana Efficiency Lvl " + player.GetModPlayer<StatsPlayer>().ManaEffSkill, Color.Purple, false);
 			return true;
 		}
 

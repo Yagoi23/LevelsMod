@@ -26,6 +26,9 @@ namespace LevelsMod
 		public float SpeedXP;
 		public int JumpSkill;
 		public float JumpXP;
+
+		public int ManaEffSkill;
+		public float ManaEffXP;
 		public override void SetupStartInventory(IList<Item> items, bool mediumcoreDeath) {
 			DMGSkill = 0;
 			DMGXP = 0f;
@@ -41,6 +44,9 @@ namespace LevelsMod
 			val.Add("SpeedXP", SpeedXP);
 			val.Add("JumpSkill", JumpSkill);
 			val.Add("JumpXP", JumpXP);
+
+			val.Add("ManaEffSkill", ManaEffSkill);
+			val.Add("ManaEffXp", ManaEffXP);
 			return val;
 		}
 		public override void Load(TagCompound tag)
@@ -53,6 +59,9 @@ namespace LevelsMod
 			SpeedXP = tag.GetFloat("SpeedXP");
 			JumpSkill = tag.GetInt("JumpSkill");
 			JumpXP = tag.GetFloat("JumpXP");
+
+			ManaEffSkill = tag.GetInt("ManaEffSkill");
+			ManaEffXP = tag.GetFloat("ManaEffXP");
 		}
 
 		public override void LoadLegacy(BinaryReader reader)
@@ -66,6 +75,8 @@ namespace LevelsMod
 		{
 			player.allDamage += (float)((float)DMGSkill/10);
 			player.statDefense += (int)((float)DefenseSkill);
+			player.manaCost -= (int)((float)ManaEffSkill);
+			//player.manaCost -=
 			//player.endurance += (float)((float)DefenseSkill/10);
 			SpeedBuff();
 			JumpBuff();

@@ -31,10 +31,12 @@ namespace LevelsMod.Items
 			player.GetModPlayer<StatsPlayer>().DefenseSkill = 0;
 			player.GetModPlayer<StatsPlayer>().SpeedSkill = 0;
 			player.GetModPlayer<StatsPlayer>().JumpSkill = 0;
+			player.GetModPlayer<StatsPlayer>().ManaEffSkill = 0;
 			Main.NewText("Damage Lvl " + player.GetModPlayer<StatsPlayer>().DMGSkill, Color.Red, false);
 			Main.NewText("Defense Lvl " + player.GetModPlayer<StatsPlayer>().DefenseSkill, Color.Red, false);
 			Main.NewText("Speed Lvl " + player.GetModPlayer<StatsPlayer>().SpeedSkill, Color.Red, false);
 			Main.NewText("Jump Lvl " + player.GetModPlayer<StatsPlayer>().JumpSkill, Color.Red, false);
+			Main.NewText("Mana Efficiency Lvl " + player.GetModPlayer<StatsPlayer>().ManaEffSkill, Color.Red, false);
 			return true;
 		}
 
