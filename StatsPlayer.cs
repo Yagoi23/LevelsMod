@@ -109,7 +109,7 @@ namespace LevelsMod
 			player.meleeCrit += (int)((float)CritSkill);
 			player.thrownCrit += (int)((float)CritSkill);
 			player.manaRegen += (int)((float)ManaRGNSkill);
-			player.endurance += (int)((float)EnduranceSkill);
+			player.endurance += (int)((float)EnduranceSkill/100);
 			//player.magicDamage -= (float)((float)ManaEffSkill / 50);
 			//player.manaCost -=
 			//player.endurance += (float)((float)DefenseSkill/10);
