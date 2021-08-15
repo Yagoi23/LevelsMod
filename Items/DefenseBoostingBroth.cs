@@ -21,6 +21,7 @@ namespace LevelsMod.Items
 			item.useAnimation = 15;
 			item.useTime = 15;
 			item.useStyle = 2;
+			item.value = 50000;
 			item.UseSound = SoundID.Item3;
 			item.consumable = true;
 		}

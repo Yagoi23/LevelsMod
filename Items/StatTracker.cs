@@ -20,6 +20,7 @@ namespace LevelsMod.Items
 			item.rare = ItemRarityID.Red;
 			item.useAnimation = 15;
 			item.useTime = 15;
+			item.value = 50000;
 			item.useStyle = 2;
 			//item.UseSound = SoundID.Item3;
 			item.consumable = false;

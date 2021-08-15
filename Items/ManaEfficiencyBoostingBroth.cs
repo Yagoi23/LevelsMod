@@ -19,6 +19,7 @@ namespace LevelsMod.Items
 			item.maxStack = 99;
 			item.rare = ItemRarityID.Red;
 			item.useAnimation = 15;
+			item.value = 50000;
 			item.useTime = 15;
 			item.useStyle = 2;
 			item.UseSound = SoundID.Item3;
