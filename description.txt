@@ -1,1 +1,1 @@
-Yagoi's Levels Mod is a pretty cool mod, it does...this. Modify this file with a description of your mod.
+Yagoi's Levels Mod adds a levels system to the game (which is probably not balanced).
